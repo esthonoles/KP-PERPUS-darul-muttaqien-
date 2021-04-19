@@ -118,7 +118,7 @@ $total_buku = mysqli_num_rows($buku);
 
             <!-- Card Body -->
             <div class="card-body">
-                <div class="table-responsive table-wrapper-scroll-y">
+                <div class="table-responsive my-custom-scrollbar">
                     <table class="table table-striped text-dark" width="100%" cellspacing="0">
 
                         <tbody>
@@ -145,12 +145,12 @@ $total_buku = mysqli_num_rows($buku);
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Pengunjung Hari ini</h6>
+                <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengunjung Hari ini</h6>
 
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <div class="table-responsive table-wrapper-scroll-y">
+                <div class="table-responsive my-custom-scrollbar">
                     <table class="table table-striped text-dark" width="90%" cellspacing="0">
 
                         <tbody>

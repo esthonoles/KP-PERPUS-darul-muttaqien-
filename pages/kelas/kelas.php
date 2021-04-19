@@ -39,10 +39,10 @@ if (isset($_POST['tambah'])) {
 
                         <div class="col-xl-8 col-md-6">
                             <div class="table-responsive">
-                                <table class="table table-striped " id="mauexport" width="100%" cellspacing="0">
+                                <table class="table table-striped text-dark" id="mauexport" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <!-- <th>No</th> -->
+                                            <th>Kode Kelas</th>
                                             <th>Kelas</th>
                                             <th>Action</th>
                                         </tr>
@@ -53,7 +53,7 @@ if (isset($_POST['tambah'])) {
                                         foreach ($kelas as $kls) :
                                         ?>
                                             <tr>
-                                                <!-- <td><?= $no ?></td> -->
+                                                <td><?= $kls['id_kelas'] ?></td>
                                                 <td><?= $kls['kelas']; ?></td>
                                                 <td style="width: 100px;"><a href="?pages=kelas&aksi=hapus&id=<?= $kls['id'] ?>" class="btn btn-sm btn-danger" name="hapus" onclick="return confirm('Hapus Kelas <?= $kls['kelas']; ?> ? ')"><i class="far fa-trash-alt">
                                                         </i> hapus</a></td>

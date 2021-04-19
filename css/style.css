@@ -1,17 +1,16 @@
-
 /* add scrolll table manual */
 
 .my-custom-scrollbar {
-    position: relative;
-    height: 500px;
-    overflow: auto;
-    }
-    .table-wrapper-scroll-y {
-    display: block;
-    }
-.profile-body{
-    background-color: purple;
-    margin: auto;
-    width: 80%;
-    height: 350px;
+  position: relative;
+  height: 500px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
+.profile-body {
+  background-color: purple;
+  margin: auto;
+  width: 80%;
+  height: 250px;
 }

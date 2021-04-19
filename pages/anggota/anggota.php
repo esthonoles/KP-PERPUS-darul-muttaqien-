@@ -13,13 +13,6 @@ $query = mysqli_query($conn, $select_data);
         <h1 class="h5 mb-0 text-dark font-weight-bold">DATA ANGGOTA</h1>
     </div>
 
-    <!-- <a href="" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#import">
-            <span class="icon text-white-50">
-                <i class="fas fa-upload"></i>
-            </span>
-            <span class="text">Import Data From Excel</span>
-        </a> -->
-
 </div>
 
 <div class="row m-auto">
@@ -28,10 +21,18 @@ $query = mysqli_query($conn, $select_data);
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
-            <span class="text">Tambah Data Baru</span>
+            <span class="text">Tambah Data</span>
         </a>
     </div>
 
+    <div class="ml-2">
+        <a href="#" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#import">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Import Data</span>
+        </a>
+    </div>
 </div>
 <div class="card shadow mb-4">
     <div class="card-body">
@@ -126,9 +127,105 @@ $query = mysqli_query($conn, $select_data);
         </div>
     </div>
 </div>
+
+<!-- modal import data anggota -->
+
+<div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Import File Excel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form action="" method="post" enctype="multipart/form-data" class="mt-4">
+                    <div class="col">
+                        <a href="pages/anggota/import/sample/anggota.xlsx" class="btn btn-success btn-icon-split btn-sm mb-3">
+
+                            <span class="icon text-white-50">
+                                <i class="fas fa-download"></i>
+                            </span>
+                            <span class="text">Download Format File Excel</span>
+                        </a>
+                        <div class="input-group mb-3">
+
+                            <div class="custom-file">
+                                <input type="file" name="file" class="custom-file-input" id="inputGroupFile01" required>
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                <!-- <input type="file" name="file" /><br /><br /> -->
+                            </div>
+                            <!-- <input type="submit" name="import" value="Upload" /> -->
+                            <button type="submit" class="btn btn-sm btn-primary ml-2" name="import"> <i class="fas fa-upload"></i> upload</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- fungsi modal import php -->
+
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Ramsey\Uuid\Uuid;
+
+if (isset($_POST['import'])) {
+    $allowed_ext = ['xls', 'csv', 'xlsx'];
+    $file = $_FILES['file']['name'];
+    $ekstensi = explode(".", $file);
+    $ext_file = end($ekstensi);
+    $file_name = "file-" . round(microtime(true)) . "." . end($ekstensi);
+    $sumber = $_FILES['file']['tmp_name'];
+    $target_dir = "pages/buku/import/";
+    $target_file = $target_dir . $file_name;
+    move_uploaded_file($sumber, $target_file);
+
+    echo $file_name;
+    $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($target_file);
+    $data = $spreadsheet->getActiveSheet()->toArray();
+
+    for ($i = 2; $i < count($data); $i++) {
+        $uuid = Uuid::uuid4()->toString();
+
+        $nis = $data[$i]['0'];
+        $nama = $data[$i]['1'];
+        $id_kelas = $data[$i]['2'];
+        $jk = $data[$i]['3'];
+
+        mysqli_query($conn, "insert into tb_anggota values('$uuid','$nis','$nama','$id_kelas',
+                            '$jk')");
+    }
+
+    unlink($target_file);
+    header("location:?pages=anggota");
+}
+?>
+
+
+
+
+
+
+
+<!-- end of modal import data anggota -->
+
+
+
+<?php
+
 
 if (isset($_POST['add'])) {
     $uuid = Uuid::uuid4()->toString();
@@ -225,11 +322,11 @@ if (isset($_POST['import'])) {
     $target_file = $target_dir . $target_file;
     $upload = move_uploaded_file($source, $target_files);
 
-    if ($upload) {
-        echo "Upload Success";
-    } else {
-        echo "Upload Gagal!!";
-    }
+    // if ($upload) {
+    //     echo "Upload Success";
+    // } else {
+    //     echo "Upload Gagal!!";
+    // }
 }
 ?>
 

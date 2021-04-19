@@ -49,7 +49,7 @@ if (isset($_POST['btn_pinjam'])) {
 
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Form Transaksi Peminjaman Buku</h1>
+    <h1 class="h5 text-dark font-weight-bold">TRANSAKSI PEMINJAMAN BUKU</h1>
     <a href="?pages=peminjaman" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Kembali</a>
 </div>
 
@@ -234,18 +234,11 @@ if (isset($_POST['btn_pinjam'])) {
 </div>
 
 
-<!-- modal data buku -->
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
-
-
 <script>
     $(document).ready(function() {
         $('table.display').DataTable();
     });
 </script>
-
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script> -->
 
 <!-- live search judul buku -->
 
