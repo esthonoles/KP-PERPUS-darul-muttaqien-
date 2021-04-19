@@ -40,6 +40,7 @@ if (isset($_POST['btn_pinjam'])) {
 }
 ?>
 
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"> -->
 <style>
     div.dataTables_wrapper {
         margin-bottom: 3em;
@@ -231,6 +232,22 @@ if (isset($_POST['btn_pinjam'])) {
     </div>
 
 </div>
+
+
+<!-- modal data buku -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
+
+
+<script>
+    $(document).ready(function() {
+        $('table.display').DataTable();
+    });
+</script>
+
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script> -->
+
+<!-- live search judul buku -->
 
 <script>
     $(document).on("click", "#select_id", function() {
