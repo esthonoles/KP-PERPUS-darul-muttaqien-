@@ -8,10 +8,21 @@ $query = mysqli_query($conn, $select_data);
 ?>
 
 
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<div class="d-sm-flex align-items-center justify-content-between">
     <div class="mb-3">
         <h1 class="h5 mb-0 text-dark font-weight-bold">DATA ANGGOTA</h1>
     </div>
+
+    <!-- <a href="" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#import">
+            <span class="icon text-white-50">
+                <i class="fas fa-upload"></i>
+            </span>
+            <span class="text">Import Data From Excel</span>
+        </a> -->
+
+</div>
+
+<div class="row m-auto">
     <div class="mb-3">
         <a href="#" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#add">
             <span class="icon text-white-50">
@@ -19,14 +30,8 @@ $query = mysqli_query($conn, $select_data);
             </span>
             <span class="text">Tambah Data Baru</span>
         </a>
-        <!-- <a href="" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#import">
-            <span class="icon text-white-50">
-                <i class="fas fa-upload"></i>
-            </span>
-            <span class="text">Import Data From Excel</span>
-        </a> -->
-
     </div>
+
 </div>
 <div class="card shadow mb-4">
     <div class="card-body">

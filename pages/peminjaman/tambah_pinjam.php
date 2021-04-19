@@ -40,7 +40,6 @@ if (isset($_POST['btn_pinjam'])) {
 }
 ?>
 
-<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"> -->
 <style>
     div.dataTables_wrapper {
         margin-bottom: 3em;
@@ -141,7 +140,7 @@ if (isset($_POST['btn_pinjam'])) {
                     ?>
 
                     <div class="table-responsive">
-                        <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-striped text-dark" id="mauexport" width="100%" cellspacing="0">
                             <thead class="table-bordered">
                                 <tr>
                                     <td>No Induk</td>
@@ -156,7 +155,7 @@ if (isset($_POST['btn_pinjam'])) {
                                         <td><?= $anggota['nis'] ?></td>
                                         <td><?= $anggota['nama'] ?></td>
                                         <td><?= $anggota['kelas'] ?></td>
-                                        <td><button id="select_id" class="btn btn-sm btn-success" data-id="<?= $anggota['id']; ?>" data-nama="<?= $anggota['nama']; ?> " data-kelas="<?= $anggota['kelas']; ?>" data-nis="<?= $anggota['nis']; ?>">select</button></td>
+                                        <td><button id="select_id" class="btn btn-sm btn-info" data-id="<?= $anggota['id']; ?>" data-nama="<?= $anggota['nama']; ?> " data-kelas="<?= $anggota['kelas']; ?>" data-nis="<?= $anggota['nis']; ?>">select</button></td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
@@ -187,7 +186,7 @@ if (isset($_POST['btn_pinjam'])) {
                     ?>
 
                     <div class="table-responsive">
-                        <table class="table display table-striped" id="" width="100%" cellspacing="0">
+                        <table class="table display table-striped text-dark" id="mauexport" width="100%" cellspacing="0">
                             <thead class="table-bordered ">
                                 <tr>
                                     <td>Kode</td>
@@ -233,22 +232,6 @@ if (isset($_POST['btn_pinjam'])) {
 
 </div>
 
-
-<!-- modal data buku -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-
-
-<script>
-    $(document).ready(function() {
-        $('table.display').DataTable();
-    });
-</script>
-
-<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
-
-<!-- live search judul buku -->
-
 <script>
     $(document).on("click", "#select_id", function() {
         var id = $(this).data('id');
@@ -281,4 +264,17 @@ if (isset($_POST['btn_pinjam'])) {
 
         $("#cari_buku").modal("hide");
     })
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#mauexport').DataTable({
+            // untuk menampilkan tombol export data
+            // dom: 'Bfrtip',
+            // buttons: [
+            //     'csv', 'excel', 'pdf', 'print'
+            // ]
+        });
+    });
 </script>
