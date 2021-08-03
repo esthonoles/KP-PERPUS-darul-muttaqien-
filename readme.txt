@@ -9,3 +9,6 @@
 
 
   library --> Menggunakan uuid & phpspreadsheet
+  
+  php versi 8 required
+  semua aset dari bootstrap jadi perlu koneksi internet (menggunakan CDN)
